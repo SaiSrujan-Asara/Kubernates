@@ -1,0 +1,16 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: j1
+spec:
+  completions: 6
+  parallelism: 2
+  template:
+    metadata:
+      labels:
+        country: newyork
+    spec:
+      containers:
+      - name: c200
+        image: luksa/batch-job
+      restartPolicy: OnFailure

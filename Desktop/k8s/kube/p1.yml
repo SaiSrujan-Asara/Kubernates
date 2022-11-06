@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: Pod
+metadata:
+   name: env1
+   labels:
+     sec: en
+spec:
+  containers:
+  - name: c1
+    image: busybox
+    command: ["sleep"]
+    args: ["infinity"]
+    env:
+    - name: FIRSTNAME
+      valueFrom:
+        configMapKeyRef:
+          name: cm1
+          key: name1
+    - name: LASTNAME
+      valueFrom:
+        configMapKeyRef:
+          name: cm1
+          key: name2

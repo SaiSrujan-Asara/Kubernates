@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: p2
+  labels:
+    sec: prod
+    dep: infra
+spec:
+  containers:
+  - name: c2
+    image: centos:latest
+    command: ["/bin/sleep","3650d"]

@@ -1,0 +1,25 @@
+apiVersion: apps/v1 
+kind: Deployment
+metadata:
+  name: d1
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      country: india
+  minReadySeconds: 10
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 1
+      maxSurge: 1
+  template:
+    metadata:
+      labels:
+        country: india 
+    spec:
+      containers:
+      - name: c01
+        image: nginx
+        ports:
+        - containerPort: 80 

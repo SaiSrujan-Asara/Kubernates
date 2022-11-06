@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: dm1
+spec:
+  selector:
+    matchLabels:
+      country: russia
+  template:
+    metadata:
+      labels:
+        country: russia
+    spec:
+      containers:
+      - name: c150
+        image: ubuntu:latest
+        command: ["/usr/sleep", "3650d"]
+      nodeSelector:
+        country: ussr

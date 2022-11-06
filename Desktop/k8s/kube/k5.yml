@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: d2
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      country: usa
+  template:
+    metadata:
+      labels:
+        country: usa
+    spec:
+      containers:
+      - name: cn1
+        image: nginx:latest
+        ports:
+        - containerPort: 80  

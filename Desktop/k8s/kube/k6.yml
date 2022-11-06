@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: d1
+  labels:
+    prod: db
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      sec: p1
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 1
+      maxSurge: 1  
+  minReadySeconds: 10
+  template:
+    metadata:
+       labels:
+         sec: p1
+    spec:
+      containers:
+      - name: c1
+        image: nigelpoulton/k8sbook:text-dev
+        ports:
+        - containerPort: 8080

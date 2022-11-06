@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Pod
+metadata: 
+  name: cv
+  labels:
+    sec: hr
+spec:
+  volumes:
+  - name: testvol
+    configMap:
+      name: cm1
+  containers:
+  - name: c100
+    image: nginx:latest
+    volumeMounts:
+    - name: testvol
+      mountPath: /etc/name 
